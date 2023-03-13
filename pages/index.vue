@@ -1,26 +1,66 @@
 <template>
-    <main>
-        <HeaderHome/>
-        <h2>Projets</h2>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-    </main>
+  <main>
+    <div v-if="home" class="header__wrapper">
+      <HeaderHome :home="home?.data.attributes" />
+    </div>
+    <ProjectsList>
+      <ProjectCard
+        v-for="project in projects"
+        :key="project.id"
+        :project="project"
+      />
+    </ProjectsList>
+  </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ResponseAPI, Home } from '@/types/types'
 
+const projects = ref([
+  {
+    id: 1,
+    title: 'Project 1',
+    image:
+      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
+  },
+  {
+    id: 2,
+    title: 'Project 2',
+    image:
+      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
+  },
+  {
+    id: 3,
+    title: 'Project 3',
+    image:
+      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
+  },
+  {
+    id: 3,
+    title: 'Project 3',
+    image:
+      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
+  },
+])
 
+const config = useRuntimeConfig()
 
+const { data: home } = await useAsyncData<ResponseAPI<Home>>(() =>
+  $fetch(`${config.API_BASE_URL}/home`)
+)
 </script>
 
 <style lang="scss" scoped>
 h2 {
-    font-family: "IBMPlexMono SemiBold";
-    color: var(--blue);
-    font-size: clamp(32px,3.5vw,64px);
-    letter-spacing: -3px;
+  font-family: 'IBMPlexMono SemiBold';
+
+  color: var(--blue);
+  font-size: clamp(32px, 3.5vw, 64px);
+  letter-spacing: -3px;
+  margin-left: calc(100vw / 6);
 }
 
+.header__wrapper {
+  min-height: 100vh;
+}
 </style>
-  
