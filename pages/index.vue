@@ -19,25 +19,25 @@ import { ResponseAPI, Home } from '@/types/types'
 const projects = ref([
   {
     id: 1,
-    title: 'Project 1',
+    title: 'Weather App',
     image:
       'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
   },
   {
     id: 2,
-    title: 'Project 2',
+    title: 'Portfolio',
     image:
       'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
   },
   {
     id: 3,
-    title: 'Project 3',
+    title: 'Structure',
     image:
       'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
   },
   {
     id: 3,
-    title: 'Project 3',
+    title: 'FormulaBet',
     image:
       'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
   },
@@ -52,7 +52,7 @@ const { data: home } = await useAsyncData<ResponseAPI<Home>>(() =>
 
 <style lang="scss" scoped>
 h2 {
-  font-family: 'IBMPlexMono SemiBold';
+  font-family: 'Space Grotesk Variable';
 
   color: var(--blue);
   font-size: clamp(32px, 3.5vw, 64px);

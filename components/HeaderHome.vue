@@ -16,6 +16,7 @@ import { Home } from '@/types/types'
 
 type HomeProps = Omit<Home, 'createdAt' | 'publishedAt' | 'updatedAt'>
 defineProps<{ home: HomeProps }>()
+
 </script>
 
 <style scoped lang="scss">
@@ -25,10 +26,11 @@ defineProps<{ home: HomeProps }>()
   padding-top: calc(100vh / 6);
 }
 .header__home h1 {
-  @extend %title-1;
+  @extend %title-1--big;
   grid-column: 2 / span 4;
   grid-row: 1 / span 1;
-  font-family: 'IBMPlexMono Medium';
+  font-family: 'Space Grotesk Variable';
+  font-weight: 500;
   color: var(--orange);
 }
 .header-home__firstname {
@@ -36,13 +38,12 @@ defineProps<{ home: HomeProps }>()
 }
 .header-home__name {
   display: block;
-  margin-left: calc((100vw / 6));
+  margin-left: calc(100vw / 6);
 }
 .header__home h2 {
   grid-column: 3 / span 3;
   grid-row: 2 / span 1;
-  font-size: 1.5rem;
-  font-family: 'IBMPlexMono SemiBold';
+  @extend %title-2;
   margin-top: 2rem;
   margin-bottom: 1rem;
   text-transform: uppercase;

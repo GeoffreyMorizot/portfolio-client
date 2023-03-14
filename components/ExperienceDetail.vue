@@ -17,19 +17,18 @@
   </article>
 </template>
 
-
-
 <style scoped lang="scss">
 .xp {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding-top: 0.25rem;
+  padding-top: 0.5rem;
   padding-bottom: 1.5rem;
   border-top: 2px solid var(--blue);
 }
 
 .xp__dates {
-  font-family: 'IBMPlexMono Regular';
+  font-family: 'Space Grotesk Variable';
+  font-variation-settings: "wght" 425;
   font-size: 0.9rem;
   color: var(--blue);
 }
@@ -38,7 +37,7 @@
   margin-inline: 0.25rem;
 }
 
-.xp__content{
+.xp__content {
   grid-column: 2 / span 3;
   display: flex;
   flex-direction: column;

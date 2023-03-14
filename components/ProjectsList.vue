@@ -9,11 +9,10 @@
 
 <style lang="scss" scoped>
 .projects__title {
-  position: relative;
-  font-family: 'IBMPlexMono SemiBold';
-  color: var(--blue);
-  font-size: clamp(32px, 3.5vw, 64px);
-  letter-spacing: -3px;
+  @extend %title-2;
+  font-size: 3rem;
   margin-left: calc(100vw / 6);
+  margin-right: calc((100vw / 2));
+  padding-bottom: 3rem;
 }
 </style>
