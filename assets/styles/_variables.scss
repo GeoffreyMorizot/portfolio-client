@@ -1,7 +1,10 @@
 :root {
   --nb-column: 6;
   --grid: repeat(var(--nb-column), 1fr);
+  --primary-font: 'Space Grotesk Variable';
+  --secondary-font: 'Inter Variable';
 }
+
 
 %grid-6 {
   display: grid;
@@ -22,29 +25,34 @@
 
 %title-1 {
   @extend %title-base;
-  font-family: 'IBMPlexMono SemiBold';
-  font-size: clamp(1.7rem, 8vw, 13rem);
-
-  letter-spacing: -4px;
-  line-height: 1.2;
+  font-family: var(--primary-font);
+  font-variation-settings: "wght" 600;
+  font-size: clamp(2rem, 8vw, 13rem);
+  line-height: 1.1;
   color: var(--orange);
   white-space: nowrap;
 }
 
+%title-1--big {
+  @extend %title-base;
+  @extend %title-1;
+  font-size: clamp(3rem, 10vw, 13rem);
+  letter-spacing: -3px;
+}
+
 %title-2 {
   @extend %title-base;
-  font-family: 'IBMPlexMono medium';
-  font-size: clamp(1.5em, 3.5vw, 10rem);
-
-  letter-spacing: -4px;
+  font-family: var(--primary-font);
+  font-variation-settings: "wght" 600;
+  font-size: clamp(1.6rem, 3vw, 10rem);
   line-height: 1.2;
   color: var(--blue);
   white-space: nowrap;
 }
 
 %title-4 {
-  @extend %title-base;
-  font-family: 'IBMPlexMono Medium';
+  font-family: var(--secondary-font);
+  font-variation-settings: "wght" 550;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -54,25 +62,25 @@
 
 %title-5 {
   @extend %title-base;
-  font-family: 'IBMPlexMono Medium';
+  font-family: var(--secondary-font);
+  font-variation-settings: "wght" 550;
   font-size: 1.1rem;
-  letter-spacing: -1px;
   line-height: 1.2;
   color: var(--orange);
 }
 
 %text-body {
-  font-family: 'IBMPlexMono Medium';
-  font-size: 1.125rem;
-  letter-spacing: 0.5px;
-  line-height: 1.5;
+  font-family: var(--secondary-font);
+  font-variation-settings: "wght" 450;
+  font-size: 1.3rem;
+  line-height: 1.35;
   color: var(--blue);
 }
 
-%text-body-small{
-  font-family: 'IBMPlexMono Regular';
+%text-body-small {
+  font-family: var(--secondary-font);
+  font-variation-settings: "wght" 500;
   font-size: 1rem;
-  letter-spacing: -0.5px;
   line-height: 1.5;
   color: var(--blue);
 }

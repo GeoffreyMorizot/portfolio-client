@@ -55,11 +55,17 @@ defineProps<{ project: { title: string } }>()
   overflow: hidden;
   width: 50%;
   height: auto;
+  font-family: var(--primary-font);
+  font-variation-settings: "wght" 600;
   font-family: 'IBMPlexMono Medium';
+  font-family: var(--primary-font);
+  font-variation-settings: "wght" 600;
   line-height: 1;
+  font-size: clamp(32px, 4vw, 64px);
   font-size: clamp(32px, 3.5vw, 64px);
+  font-size: clamp(32px, 4vw, 64px);
   color: var(--blue);
-
+  z-index: 1;
   &::after {
     content: attr(data-title);
     position: absolute;
@@ -67,7 +73,11 @@ defineProps<{ project: { title: string } }>()
     right: 0px;
     bottom: 0px;
     left: 0px;
+    font-family: var(--primary-font);
+    font-variation-settings: "wght" 700;
     font-family: 'IBMPlexMono Bold';
+    font-family: var(--primary-font);
+    font-variation-settings: "wght" 700;
     font-size: 17vw;
     white-space: nowrap;
     color: transparent;

@@ -8,7 +8,7 @@
           config.public.BASE_URL +
           about?.data.attributes.imageProfil.data.attributes.formats.large.url
         "
-        alt=""
+        :alt="about?.data.attributes.imageProfil.data.attributes.alternativeText"
       />
     </header>
     <main>
@@ -24,7 +24,11 @@
 <script setup lang="ts">
 import { About, ResponseAPI } from '@/types/types'
 
+console.log("ok")
+
 const config = useRuntimeConfig()
+
+
 const { data: about } = useFetch<ResponseAPI<About>>(
   `${config.API_BASE_URL}/about?populate=imageProfil`
 )
@@ -37,6 +41,7 @@ const { data: about } = useFetch<ResponseAPI<About>>(
 
 .about header {
   padding-top: 10rem;
+  padding-bottom: 12rem;
   grid-column: 2 / span 2;
 }
 
@@ -46,14 +51,14 @@ const { data: about } = useFetch<ResponseAPI<About>>(
 }
 
 .about header p {
-  @extend %text-body;
+  @extend %text-body-small;
 }
 
 .about img {
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(100vw / 3);
+  width: calc((100% / 12) * 5);
   height: auto;
 }
 

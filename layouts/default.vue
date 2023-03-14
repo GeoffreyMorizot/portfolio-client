@@ -36,9 +36,9 @@
   align-items: center;
   margin-inline: calc((100vw / 6) / 2);
   padding: 1rem 0;
-  font-family: 'IBMPlexMono Medium';
+  font-family: var(--secondary-font);
+  font-weight: 600;
   color: var(--blue);
-  mix-blend-mode: difference;
 }
 
 .nav .nav__logo {
