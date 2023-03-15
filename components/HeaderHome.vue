@@ -7,7 +7,7 @@
     <h2>
       <pre>{{ home.job }}</pre>
     </h2>
-    <p>{{ home.bio }}</p>
+    <div class="header-home__intro" v-html="$mdRenderer.render(home.bio)"></div>
   </header>
 </template>
 
@@ -48,9 +48,10 @@ defineProps<{ home: HomeProps }>()
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
-.header__home p {
+.header__home .header-home__intro {
   grid-column: 3 / span 3;
   grid-row: 3 / span 1;
   @extend %text-body;
 }
+
 </style>

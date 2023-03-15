@@ -8,6 +8,11 @@
 <script setup></script>
 
 <style lang="scss" scoped>
+
+section {
+  
+  margin-bottom: 20rem;
+}
 .projects__title {
   @extend %title-2;
   font-size: 3rem;
