@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink href="#" class="card">
+  <NuxtLink :href="`${project.id}`" class="card">
     <div class="card__img">
       <img
         src="https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg"
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ project: { title: string } }>()
+defineProps<{ project: { title: string; id: number } }>()
 </script>
 
 <style lang="scss" scoped>

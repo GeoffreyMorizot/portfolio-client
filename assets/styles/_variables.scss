@@ -42,8 +42,8 @@
 %title-2 {
   @extend %title-base;
   font-family: var(--primary-font);
-  font-variation-settings: 'wght' 600;
-  font-size: clamp(1.6rem, 3vw, 10rem);
+  font-variation-settings: 'wght' 700;
+  font-size: clamp(1.6rem, 5vw, 10rem);
   line-height: 1.2;
   color: var(--blue);
   white-space: nowrap;
