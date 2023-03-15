@@ -56,7 +56,7 @@ defineProps<{ project: { title: string } }>()
   width: 50%;
   height: auto;
   font-family: var(--primary-font);
-  font-variation-settings: "wght" 600;
+  font-variation-settings: 'wght' 600;
   line-height: 1;
   font-size: clamp(32px, 4vw, 64px);
   color: var(--blue);
@@ -69,7 +69,7 @@ defineProps<{ project: { title: string } }>()
     bottom: 0;
     left: 0;
     font-family: var(--primary-font);
-    font-variation-settings: "wght" 700;
+    font-variation-settings: 'wght' 700;
     font-size: 17vw;
     white-space: nowrap;
     color: transparent;
@@ -81,13 +81,20 @@ defineProps<{ project: { title: string } }>()
     z-index: -1;
   }
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 35%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 1) 65%,
+      rgba(255, 255, 255, 0) 100%
+    );
     z-index: -1;
   }
 }

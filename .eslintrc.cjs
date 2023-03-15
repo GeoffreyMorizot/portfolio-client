@@ -13,7 +13,7 @@ module.exports = {
   rules: {
     'no-console': 'warn',
     'no-debugger': 'warn',
-    'vue/no-v-html': 'error',
+    'vue/no-v-html': 'off',
     'vue/require-default-prop': 'error',
     'vue/require-prop-types': 'error',
     'vue/require-v-for-key': 'error',

@@ -5,7 +5,6 @@
   --secondary-font: 'Inter Variable';
 }
 
-
 %grid-6 {
   display: grid;
   grid-template-columns: var(--grid);
@@ -26,7 +25,7 @@
 %title-1 {
   @extend %title-base;
   font-family: var(--primary-font);
-  font-variation-settings: "wght" 600;
+  font-variation-settings: 'wght' 600;
   font-size: clamp(2rem, 8vw, 13rem);
   line-height: 1.1;
   color: var(--orange);
@@ -43,7 +42,7 @@
 %title-2 {
   @extend %title-base;
   font-family: var(--primary-font);
-  font-variation-settings: "wght" 600;
+  font-variation-settings: 'wght' 600;
   font-size: clamp(1.6rem, 3vw, 10rem);
   line-height: 1.2;
   color: var(--blue);
@@ -52,7 +51,7 @@
 
 %title-4 {
   font-family: var(--secondary-font);
-  font-variation-settings: "wght" 550;
+  font-variation-settings: 'wght' 550;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -63,7 +62,7 @@
 %title-5 {
   @extend %title-base;
   font-family: var(--secondary-font);
-  font-variation-settings: "wght" 550;
+  font-variation-settings: 'wght' 550;
   font-size: 1.1rem;
   line-height: 1.2;
   color: var(--orange);
@@ -71,7 +70,7 @@
 
 %text-body {
   font-family: var(--secondary-font);
-  font-variation-settings: "wght" 450;
+  font-variation-settings: 'wght' 450;
   font-size: 1.3rem;
   line-height: 1.35;
   color: var(--blue);
@@ -79,7 +78,7 @@
 
 %text-body-small {
   font-family: var(--secondary-font);
-  font-variation-settings: "wght" 500;
+  font-variation-settings: 'wght' 500;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--blue);

@@ -28,7 +28,7 @@
 
 .xp__dates {
   font-family: 'Space Grotesk Variable';
-  font-variation-settings: "wght" 425;
+  font-variation-settings: 'wght' 425;
   font-size: 0.9rem;
   color: var(--blue);
 }

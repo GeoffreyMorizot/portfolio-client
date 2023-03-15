@@ -8,9 +8,7 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-
 section {
-  
   margin-bottom: 20rem;
 }
 .projects__title {

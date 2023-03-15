@@ -8,7 +8,9 @@
           config.public.BASE_URL +
           about?.data.attributes.imageProfil.data.attributes.formats.large.url
         "
-        :alt="about?.data.attributes.imageProfil.data.attributes.alternativeText"
+        :alt="
+          about?.data.attributes.imageProfil.data.attributes.alternativeText
+        "
       />
     </header>
     <main>
@@ -24,10 +26,7 @@
 <script setup lang="ts">
 import { About, ResponseAPI } from '@/types/types'
 
-console.log("ok")
-
 const config = useRuntimeConfig()
-
 
 const { data: about } = useFetch<ResponseAPI<About>>(
   `${config.API_BASE_URL}/about?populate=imageProfil`

@@ -16,7 +16,6 @@ import { Home } from '@/types/types'
 
 type HomeProps = Omit<Home, 'createdAt' | 'publishedAt' | 'updatedAt'>
 defineProps<{ home: HomeProps }>()
-
 </script>
 
 <style scoped lang="scss">
@@ -53,5 +52,4 @@ defineProps<{ home: HomeProps }>()
   grid-row: 3 / span 1;
   @extend %text-body;
 }
-
 </style>

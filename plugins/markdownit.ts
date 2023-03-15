@@ -1,5 +1,5 @@
 // @/plugins/markdownit.ts
-import md from "markdown-it";
+import md from 'markdown-it'
 
 export default defineNuxtPlugin(() => {
   const renderer = md({
@@ -9,11 +9,10 @@ export default defineNuxtPlugin(() => {
     breaks: true,
     quotes: '“”‘’',
     html: true,
-  });
+  })
   return {
     provide: {
       mdRenderer: renderer,
     },
-  };
-});
-
+  }
+})
