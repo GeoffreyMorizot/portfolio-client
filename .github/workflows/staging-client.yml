@@ -15,10 +15,4 @@ jobs:
         run: npm install
 
       - name: Run ESLint
-        run: |
-          npm run lint
-          ESLINT_EXIT_STATUS=$?
-          if [ $ESLINT_EXIT_STATUS -ne 0 ]; then
-            echo "::error::ESLint check failed with exit code $ESLINT_EXIT_STATUS"
-            exit 1
-          fi
+        run: npm run lint
