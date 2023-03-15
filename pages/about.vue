@@ -62,7 +62,9 @@ const { data: about } = useFetch<ResponseAPI<About>>(
 }
 
 .about main {
-  grid-column: 2 / span 4;
+  grid-column: 1/ -1;
   padding-top: 10rem;
+  width: 100%;
+  padding-inline: calc(100% / 6);
 }
 </style>

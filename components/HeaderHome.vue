@@ -4,9 +4,6 @@
       <span class="header-home__firstname">{{ home.firstname }}</span>
       <span class="header-home__name">{{ home.lastname }}</span>
     </h1>
-    <h2>
-      <pre>{{ home.job }}</pre>
-    </h2>
     <div class="header-home__intro" v-html="$mdRenderer.render(home.bio)"></div>
   </header>
 </template>
@@ -28,6 +25,7 @@ defineProps<{ home: HomeProps }>()
   @extend %title-1--big;
   grid-column: 2 / span 4;
   grid-row: 1 / span 1;
+  margin-bottom: 2rem;
   font-family: 'Space Grotesk Variable';
   font-weight: 500;
   color: var(--orange);
@@ -51,5 +49,7 @@ defineProps<{ home: HomeProps }>()
   grid-column: 3 / span 3;
   grid-row: 3 / span 1;
   @extend %text-body;
+  font-size: 3rem;
+  font-variation-settings: 'wght' 780;
 }
 </style>
