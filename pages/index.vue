@@ -53,7 +53,6 @@ const { data: home } = await useAsyncData<ResponseAPI<Home>>(() =>
 <style lang="scss" scoped>
 h2 {
   font-family: 'Space Grotesk Variable';
-
   color: var(--blue);
   font-size: clamp(32px, 3.5vw, 64px);
   letter-spacing: -3px;
