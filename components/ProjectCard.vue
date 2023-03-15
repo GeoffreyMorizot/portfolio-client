@@ -57,25 +57,17 @@ defineProps<{ project: { title: string } }>()
   height: auto;
   font-family: var(--primary-font);
   font-variation-settings: "wght" 600;
-  font-family: 'IBMPlexMono Medium';
-  font-family: var(--primary-font);
-  font-variation-settings: "wght" 600;
   line-height: 1;
-  font-size: clamp(32px, 4vw, 64px);
-  font-size: clamp(32px, 3.5vw, 64px);
   font-size: clamp(32px, 4vw, 64px);
   color: var(--blue);
   z-index: 1;
   &::after {
     content: attr(data-title);
     position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    font-family: var(--primary-font);
-    font-variation-settings: "wght" 700;
-    font-family: 'IBMPlexMono Bold';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     font-family: var(--primary-font);
     font-variation-settings: "wght" 700;
     font-size: 17vw;
@@ -86,6 +78,16 @@ defineProps<{ project: { title: string } }>()
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    z-index: -1;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
     z-index: -1;
   }
 }
