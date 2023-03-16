@@ -1,20 +1,19 @@
 <template>
-  <NuxtLink :href="`${project.id}`" class="card">
+  <NuxtLink :href="`#`" class="card">
     <div class="card__img">
-      <img
-        src="https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg"
-        alt=""
-        srcset=""
-      />
+      <img :src="url" :alt="project.cover.data.attributes.alternativeText" />
     </div>
-    <div class="card__title" :data-title="project.title">
-      <h3>{{ project.title }}</h3>
+    <div class="card__title" :data-title="project.name">
+      <h3>{{ project.name }}</h3>
     </div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-defineProps<{ project: { title: string; id: number } }>()
+import { Project } from '~~/types'
+
+const props = defineProps<{ project: Project }>()
+const url = useStrapiMedia(props.project.cover.data.attributes.url)
 </script>
 
 <style lang="scss" scoped>

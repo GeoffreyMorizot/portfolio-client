@@ -1,21 +1,30 @@
 <template>
   <article class="xp">
     <div class="xp__dates">
-      <time>09-2019</time>
+      <time :datetime="startDate">{{ startDate }}</time>
       <span>→</span>
-      <time>Aujourd'hui</time>
+      <time :datetime="endDate">{{ endDate }}</time>
     </div>
     <div class="xp__content">
-      <h4>SARL SPEEDCITY - DIJON</h4>
-      <h5>Chauffeur livreur / Gestion d’équipes / Communication</h5>
-      <p>
-        Gestion des calendriers des plannings de livraison et dispatche des
-        colis Participation à la gestion de la relation client (Chronopost,
-        TNT…) Participation à la livraison des colis
-      </p>
+      <h4>{{ experience.title }}</h4>
+      <h5>{{ experience.subtitle }}</h5>
+      <div v-html="$mdRenderer.render(experience.description)"></div>
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import { Experience } from '@/types'
+import useDateFormat from '@/composables/useDateFormat'
+
+const props = defineProps<{ experience: Experience }>()
+
+const startDate = useDateFormat(props.experience.period.startDate).replace(
+  '/',
+  '.'
+)
+const endDate = useDateFormat(props.experience.period.endDate).replace('/', '.')
+</script>
 
 <style scoped lang="scss">
 .xp {
@@ -34,6 +43,7 @@
 }
 
 .xp__dates span {
+  display: inline-block;
   margin-inline: 0.25rem;
 }
 
@@ -52,7 +62,13 @@
   @extend %title-5;
 }
 
-.xp__content p {
+.xp__content div {
   @extend %text-body-small;
+  & ::marker {
+    content: '- ';
+  }
+  & ul {
+    margin-left: 0.5rem;
+  }
 }
 </style>
