@@ -1,36 +1,36 @@
 <template>
   <div class="about">
     <header>
-      <h1>{{ about?.data.attributes.pageTitle }}</h1>
-      <p>{{ about?.data.attributes.headerText }}</p>
-      <img
-        :src="
-          config.public.BASE_URL +
-          about?.data.attributes.imageProfil.data.attributes.formats.large.url
-        "
-        :alt="
-          about?.data.attributes.imageProfil.data.attributes.alternativeText
-        "
-      />
+      <h1>{{ about.attributes.pageTitle }}</h1>
+      <p>{{ about.attributes.headerText }}</p>
+      <img :src="url" :alt="alternativeText" />
     </header>
     <main>
       <ExperiencesList>
-        <ExperienceDetail />
-        <ExperienceDetail />
-        <ExperienceDetail />
+        <ExperienceDetail
+          v-for="experience in about.attributes.experiences"
+          :key="experience.id"
+          :experience="experience"
+        />
       </ExperiencesList>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { About, ResponseAPI } from '@/types/types'
+import { About } from '@/types/index'
 
-const config = useRuntimeConfig()
+const { findOne } = useStrapi()
 
-const { data: about } = useFetch<ResponseAPI<About>>(
-  `${config.API_BASE_URL}/about?populate=imageProfil`
-)
+const { data: about } = await findOne<About>('about', {
+  populate: ['imageProfil', 'experiences.id', 'experiences.period'],
+}).catch(() => {
+  throw new Error("impossible de récupérer les données 'About'")
+})
+
+const url = useStrapiMedia(about.attributes.imageProfil.data.attributes.url)
+const alternativeText =
+  about.attributes.imageProfil.data.attributes.alternativeText
 </script>
 
 <style scoped lang="scss">

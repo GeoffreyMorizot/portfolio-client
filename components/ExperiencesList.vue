@@ -20,7 +20,7 @@
 
 .xp__list h2 img {
   position: absolute;
-  top: -50%;
+  top: -34%;
   left: -10%;
   width: 115%;
   transform: rotate(-3deg);

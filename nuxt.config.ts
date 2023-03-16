@@ -12,10 +12,11 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    strapi: { url: 'http://localhost:1337' },
     public: {
-      API_BASE_URL: process.env.BASE_URL + '/api',
-      BASE_URL: process.env.BASE_URL,
+      strapi: { url: 'http://localhost:1337' },
     },
   },
   ssr: false,
+  modules: ['@nuxtjs/strapi'],
 })

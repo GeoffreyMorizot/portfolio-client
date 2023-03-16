@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { Home } from '@/types/types'
+import { Home } from '~~/types'
 
 type HomeProps = Omit<Home, 'createdAt' | 'publishedAt' | 'updatedAt'>
 defineProps<{ home: HomeProps }>()

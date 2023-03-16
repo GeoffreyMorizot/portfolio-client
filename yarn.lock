@@ -960,6 +960,30 @@
     unimport "^2.2.4"
     untyped "^1.2.2"
 
+"@nuxt/kit@^3.2.3":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.3.1.tgz#93e02a41d9adc7369d704deb88ae143c29554a4e"
+  integrity sha512-zb7/2FUIB1g7nl6K6qozUzfG5uu4yrs9TQjZvpASnPBZ/x1EuJX5k3AA71hMMIVBEX9Adxvh9AuhDEHE5W26Zg==
+  dependencies:
+    "@nuxt/schema" "3.3.1"
+    c12 "^1.2.0"
+    consola "^2.15.3"
+    defu "^6.1.2"
+    globby "^13.1.3"
+    hash-sum "^2.0.0"
+    ignore "^5.2.4"
+    jiti "^1.17.2"
+    knitwork "^1.0.0"
+    lodash.template "^4.5.0"
+    mlly "^1.2.0"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    scule "^1.0.0"
+    semver "^7.3.8"
+    unctx "^2.1.2"
+    unimport "^3.0.2"
+    untyped "^1.2.2"
+
 "@nuxt/schema@3.2.3":
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.2.3.tgz#fe84483237a5f6177ebb051422cf556ffab80aa2"
@@ -977,6 +1001,25 @@
     std-env "^3.3.2"
     ufo "^1.1.1"
     unimport "^2.2.4"
+    untyped "^1.2.2"
+
+"@nuxt/schema@3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.3.1.tgz#305d0db9c535f64fad3aa1a7c985410e733f9ff0"
+  integrity sha512-E8HWzU43rXzqwDTmWduTLHY4xIwRSAUt1LbpuE9IjZ4uJZq5Mbaj4nfhANNsTQGw2c+O+rL81yzAP3i61LEJDw==
+  dependencies:
+    c12 "^1.2.0"
+    create-require "^1.1.1"
+    defu "^6.1.2"
+    hookable "^5.5.0"
+    jiti "^1.17.2"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    postcss-import-resolver "^2.0.0"
+    scule "^1.0.0"
+    std-env "^3.3.2"
+    ufo "^1.1.1"
+    unimport "^3.0.2"
     untyped "^1.2.2"
 
 "@nuxt/telemetry@^2.1.10":
@@ -1075,6 +1118,17 @@
     eslint-plugin-unicorn "^44.0.2"
     eslint-plugin-vue "^9.7.0"
     local-pkg "^0.4.2"
+
+"@nuxtjs/strapi@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/strapi/-/strapi-1.9.0.tgz#cf5b579470984ef09726416e53e0a1d5d2f8118b"
+  integrity sha512-+4Olr6gw7D2yohJ4ob4YAtB4dn0HG7EjtVHQr7CqG980he9IwAREzV/36zu+Kl42CVj41a2wJTQNFY+vE7UqKQ==
+  dependencies:
+    "@nuxt/kit" "^3.2.3"
+    defu "^6.1.2"
+    graphql "^16.6.0"
+    qs "^6.11.1"
+    ufo "^1.1.1"
 
 "@opentelemetry/api@^1.0.1":
   version "1.4.1"
@@ -1884,7 +1938,7 @@ builtins@^5.0.1:
   dependencies:
     semver "^7.0.0"
 
-c12@^1.1.2:
+c12@^1.1.2, c12@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/c12/-/c12-1.2.0.tgz#2c946dd5ea37fd4f21c4b2671bf21f69a7028707"
   integrity sha512-CMznkE0LpNEuD8ILp5QvsQVP+YvcpJnrI/zFeFnosU2PyDtx1wT7tXfZ8S3Tl3l9MTTXbKeuhDYKwgvnAPOx3w==
@@ -3491,6 +3545,11 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
+graphql@^16.6.0:
+  version "16.6.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.6.0.tgz#c2dcffa4649db149f6282af726c8c83f1c7c5fdb"
+  integrity sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw==
+
 gzip-size@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-7.0.0.tgz#9f9644251f15bc78460fccef4055ae5a5562ac60"
@@ -3567,7 +3626,7 @@ hash-sum@^2.0.0:
   resolved "https://registry.yarnpkg.com/hash-sum/-/hash-sum-2.0.0.tgz#81d01bb5de8ea4a214ad5d6ead1b523460b0b45a"
   integrity sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==
 
-hookable@^5.4.2:
+hookable@^5.4.2, hookable@^5.5.0:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/hookable/-/hookable-5.5.1.tgz#3a842c66be72a9cb14043d8e6afa5bc094c831c5"
   integrity sha512-ac50aYjbtRMMZEtTG0qnVaBDA+1lqL9fHzDnxMQlVuO6LZWcBB7NXjIu9H9iImClewNdrit4RiEzi9QpRTgKrg==
@@ -5278,6 +5337,13 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
 
+qs@^6.11.1:
+  version "6.11.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.1.tgz#6c29dff97f0c0060765911ba65cbc9764186109f"
+  integrity sha512-0wsrzgTz/kAVIeuxSjnpGC56rzYtr6JT/2BwEvMaPhFIoYa1aGO8LbzuU1R0uUYQkLpWBTOj0l/CLAJB64J6nQ==
+  dependencies:
+    side-channel "^1.0.4"
+
 querystringify@^2.1.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
@@ -6188,6 +6254,23 @@ unimport@^2.2.4:
     scule "^1.0.0"
     strip-literal "^1.0.0"
     unplugin "^1.0.1"
+
+unimport@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/unimport/-/unimport-3.0.2.tgz#c7016df38775e03c4bc7682b0194c98236e308db"
+  integrity sha512-OQ0hShpcerS1PSsISsyn/NV2dGe5xfdUn4p5nwOodq0iqq5xxYQrTidHqlFGjxIliPDtDJp80OeySzyPTjYHmA==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.2"
+    escape-string-regexp "^5.0.0"
+    fast-glob "^3.2.12"
+    local-pkg "^0.4.3"
+    magic-string "^0.30.0"
+    mlly "^1.1.1"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    scule "^1.0.0"
+    strip-literal "^1.0.1"
+    unplugin "^1.1.0"
 
 universal-user-agent@^6.0.0:
   version "6.0.0"

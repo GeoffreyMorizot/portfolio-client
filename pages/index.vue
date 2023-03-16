@@ -1,53 +1,32 @@
 <template>
   <main>
     <div v-if="home" class="header__wrapper">
-      <HeaderHome :home="home?.data.attributes" />
+      <HeaderHome :home="home.attributes" />
     </div>
     <ProjectsList>
       <ProjectCard
         v-for="project in projects"
         :key="project.id"
-        :project="project"
+        :project="project.attributes"
       />
     </ProjectsList>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ResponseAPI, Home } from '@/types/types'
+import { Home, Project } from '~~/types'
 
-const projects = ref([
-  {
-    id: 1,
-    title: 'Weather App',
-    image:
-      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
-  },
-  {
-    id: 2,
-    title: 'Portfolio',
-    image:
-      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
-  },
-  {
-    id: 3,
-    title: 'Structure',
-    image:
-      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
-  },
-  {
-    id: 3,
-    title: 'FormulaBet',
-    image:
-      'https://res.cloudinary.com/dypnlxw5g/image/upload/v1642009951/large_weather_cover_4d1cf5e27d.jpg',
-  },
-])
+const { find, findOne } = useStrapi()
 
-const config = useRuntimeConfig()
+const { data: projects } = await find<Project>('projects', {
+  populate: 'cover',
+}).catch(() => {
+  throw new Error("impossible de récupérer les données 'Projects'")
+})
 
-const { data: home } = await useAsyncData<ResponseAPI<Home>>(() =>
-  $fetch(`${config.API_BASE_URL}/home`)
-)
+const { data: home } = await findOne<Home>('home').catch(() => {
+  throw new Error("impossible de récupérer les données 'Home'")
+})
 </script>
 
 <style lang="scss" scoped>
