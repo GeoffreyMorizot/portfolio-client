@@ -13,6 +13,13 @@
           :experience="experience"
         />
       </ExperiencesList>
+      <EducationList>
+        <EducationDetail
+          v-for="education in about.attributes.educations"
+          :key="education.id"
+          :education="education"
+        />
+      </EducationList>
     </main>
   </div>
 </template>
@@ -23,7 +30,13 @@ import { About } from '@/types/index'
 const { findOne } = useStrapi()
 
 const { data: about } = await findOne<About>('about', {
-  populate: ['imageProfil', 'experiences.id', 'experiences.period'],
+  populate: [
+    'imageProfil',
+    'experiences.id',
+    'experiences.period',
+    'educations',
+    'educations.period',
+  ],
 }).catch(() => {
   throw new Error("impossible de récupérer les données 'About'")
 })
@@ -62,9 +75,9 @@ const alternativeText =
 }
 
 .about main {
+  @extend %grid-6;
   grid-column: 1/ -1;
   padding-top: 10rem;
   width: 100%;
-  padding-inline: calc(100% / 6);
 }
 </style>

@@ -7,7 +7,7 @@
     </div>
     <div class="xp__content">
       <h4>{{ experience.title }}</h4>
-      <h5>{{ experience.subtitle }}</h5>
+      <h5>{{ experience.subTitle }}</h5>
       <div v-html="$mdRenderer.render(experience.description)"></div>
     </div>
   </article>
@@ -31,7 +31,7 @@ const endDate = useDateFormat(props.experience.period.endDate).replace('/', '.')
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
   border-top: 2px solid var(--blue);
 }
 
@@ -55,11 +55,11 @@ const endDate = useDateFormat(props.experience.period.endDate).replace('/', '.')
 
 .xp__content h4 {
   @extend %title-4;
-  margin-bottom: 0.5rem;
 }
 
 .xp__content h5 {
   @extend %title-5;
+  margin-bottom: 0.5rem;
 }
 
 .xp__content div {
