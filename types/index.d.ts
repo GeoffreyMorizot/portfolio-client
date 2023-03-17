@@ -42,19 +42,31 @@ export interface About extends StrapiBaseEntity {
   headerText: string
   imageProfil: Strapi4ResponseSingleMediaImage
   experiences: Experience[]
+  educations: Education[]
 }
 
 export interface Experience {
   id: number
   __component: string
   title: string
-  subtitle: string
+  subTitle: string
   description: string
-  period: {
-    id: number
-    startDate: Date
-    endDate: Date | null
-  }
+  period: Period
+}
+
+interface Period {
+  id: number
+  startDate: Date
+  endDate: Date | null
+}
+
+export interface Education {
+  id: number
+  __component: string
+  name: string
+  location: string
+  period: Period
+  school: string
 }
 
 export interface Project extends StrapiBaseEntity {

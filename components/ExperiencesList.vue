@@ -1,24 +1,28 @@
 <template>
-  <div class="xp__list">
+  <section class="experience">
     <h2>
       <span>Expériences</span>
       <img src="/images/pen3.svg" alt="" srcset="" />
     </h2>
     <slot />
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.xp__list h2 {
+.experience {
+  grid-column: 2 / span 4;
+  margin-bottom: 10rem;
+}
+.experience h2 {
   @extend %title-2;
   font-size: clamp(2rem, 4vw, 5rem);
-
+  grid-column: 2 / span 3;
   margin-bottom: 6rem;
   position: relative;
   display: inline-block;
 }
 
-.xp__list h2 img {
+.experience h2 img {
   position: absolute;
   top: -34%;
   left: -10%;
