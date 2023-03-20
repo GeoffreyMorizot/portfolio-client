@@ -1,3 +1,5 @@
+import { Strapi4ResponseMany,Strapi4ResponseData } from "@nuxtjs/strapi/dist/runtime/types"
+
 //STRAPI
 interface StrapiBaseEntity {
   createdAt: string
@@ -43,6 +45,18 @@ export interface About extends StrapiBaseEntity {
   imageProfil: Strapi4ResponseSingleMediaImage
   experiences: Experience[]
   educations: Education[]
+  skills: {data: Omit<Strapi4ResponseData<Skill>[], "meta">}
+}
+
+export interface Skill extends StrapiBaseEntity {
+  name: string
+  subSkills: SubSkill[]
+}
+
+export interface SubSkill {
+  id: number;
+  __component: string;
+  name: string | null;
 }
 
 export interface Experience {
@@ -74,3 +88,5 @@ export interface Project extends StrapiBaseEntity {
   slug: string
   cover: Strapi4ResponseSingleMediaImage
 }
+
+
