@@ -32,6 +32,7 @@
   background-color: var(--orange);
   display: flex;
   flex-direction: column;
+  margin-top: 10rem;
 }
 .strip {
   background-color: white;

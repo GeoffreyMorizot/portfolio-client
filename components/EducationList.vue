@@ -11,6 +11,7 @@
 <style lang="scss" scoped>
 .educations {
   grid-column: 3 / span 3;
+  margin-bottom: 8rem;
 }
 
 .educations h2 {
