@@ -21,12 +21,11 @@
         />
       </EducationList>
       <SkillList>
-      <SkillDetail
+        <SkillDetail
           v-for="skill in about.attributes.skills.data"
           :key="skill.id"
           :skill="skill"
         />
-
       </SkillList>
     </main>
   </div>
@@ -45,7 +44,7 @@ const { data: about } = await findOne<About>('about', {
     'educations',
     'educations.period',
     'skills',
-    'skills.subSkills'
+    'skills.subSkills',
   ],
 }).catch(() => {
   throw new Error("impossible de récupérer les données 'About'")
