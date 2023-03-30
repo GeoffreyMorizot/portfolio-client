@@ -3,6 +3,7 @@
   --grid: repeat(var(--nb-column), 1fr);
   --primary-font: 'Space Grotesk Variable';
   --secondary-font: 'Inter Variable';
+  --ratio-image: 3 / 5
 }
 
 %grid-6 {
@@ -15,6 +16,12 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: max-content;
+}
+
+%image-ratio-cover {
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  object-position: center;
 }
 
 %title-base {

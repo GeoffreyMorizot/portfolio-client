@@ -1,4 +1,5 @@
-import { Strapi4ResponseMany,Strapi4ResponseData } from "@nuxtjs/strapi/dist/runtime/types"
+import { Strapi4ResponseMany,Strapi4ResponseData, Strapi4Response } from "@nuxtjs/strapi/dist/runtime/types" 
+import { Strapi4Formats, Strapi4Format } from "./strapi4"
 
 //STRAPI
 interface StrapiBaseEntity {
@@ -14,13 +15,23 @@ export interface Strapi4ResponseSingleMediaImage {
   }
 }
 
+export interface Strapi4ResponseMultiMediaImage {
+  data: Array<{
+    id: number
+    attributes: Strapi4MediaImage
+  }>
+}
+
+export type Strapi4FormatKey = "small" | "medium" | "thumbnail";
+export type Strapi4Formats = {
+  [key in Strapi4FormatKey]: Strapi4Format
+};
 export interface Strapi4MediaImage extends StrapiBaseEntity {
   name: string
   alternativeText: string | undefined
   caption: string | undefined
   width: number
   height: number
-  formats: Record<string, unknown>
   hash: string
   ext: string
   mime: string
@@ -29,7 +40,10 @@ export interface Strapi4MediaImage extends StrapiBaseEntity {
   previewUrl: string | undefined
   provider: string
   provider_metadata: Record<string, unknown> | undefined
+  formats: Strapi4Formats
 }
+
+
 
 //ENTITIES
 export interface Home extends StrapiBaseEntity {
@@ -86,7 +100,21 @@ export interface Education {
 export interface Project extends StrapiBaseEntity {
   name: string
   slug: string
+  description: string
   cover: Strapi4ResponseSingleMediaImage
+  images: Strapi4ResponseMultiMediaImage
+  technologies: {data: Omit<Strapi4ResponseData<Technology>, "meta">[]}
+  projectUrl: Url
+  githubUrl: Url
 }
 
 
+interface Technology extends StrapiBaseEntity {
+  name: string;
+}
+
+export interface Url {
+  id: number
+  name: string
+  link: string
+}

@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div>
     <div v-if="home" class="header__wrapper">
       <HeaderHome :home="home.attributes" />
     </div>
@@ -10,7 +10,7 @@
         :project="project.attributes"
       />
     </ProjectsList>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">

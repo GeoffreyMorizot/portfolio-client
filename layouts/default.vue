@@ -14,7 +14,9 @@
       </NuxtLink>
       <NuxtLink class="nav__link" href="about">about</NuxtLink>
     </nav>
-    <slot />
+    <main>
+      <slot />
+    </main>
     <TheFooter />
   </div>
 </template>
@@ -24,6 +26,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .nav {
