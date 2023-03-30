@@ -19,4 +19,10 @@ export default defineNuxtConfig({
   },
   ssr: false,
   modules: ['@nuxtjs/strapi'],
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
 })

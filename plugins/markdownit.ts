@@ -8,7 +8,7 @@ export default defineNuxtPlugin(() => {
     typographer: true,
     breaks: true,
     quotes: '“”‘’',
-    html: true,
+    html: false,
   })
   return {
     provide: {

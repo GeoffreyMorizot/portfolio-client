@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :href="`#`" class="card">
+  <NuxtLink :href="`project/${project.slug}`" class="card">
     <div class="card__img">
       <img :src="url" :alt="project.cover.data.attributes.alternativeText" />
     </div>
@@ -28,6 +28,7 @@ const url = useStrapiMedia(props.project.cover.data.attributes.url)
 }
 
 .card__img {
+  @extend %image-ratio-cover;
   grid-column: 1 / span 3;
   width: 50%;
   overflow: hidden;
