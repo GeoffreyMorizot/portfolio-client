@@ -12,12 +12,12 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    strapi: { url: 'http://localhost:1337' },
+    strapi: { url: 'http://0.0.0.0:1337' },
     public: {
-      strapi: { url: 'http://localhost:1337' },
+      strapi: { url: 'http://0.0.0.0:1337' },
     },
   },
-  ssr: false,
+  ssr: true,
   modules: ['@nuxtjs/strapi'],
   components: [
     {

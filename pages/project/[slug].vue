@@ -2,25 +2,35 @@
   <main class="project">
     <section>
       <ImageSrcSet
+        v-if="project?.data.attributes.cover.data"
         :sizes="`${(100 / 6) * 4}vw`"
-        :image="project.attributes.cover.data"
+        :image="project?.data.attributes.cover.data"
         class="project__image cover"
       />
       <div class="project__header">
-        <h1 class="project__title">{{ project.attributes.name }}</h1>
-        <SpecRow name-spec="github" :data="project.attributes.githubUrl" />
-        <SpecRow name-spec="url" :data="project.attributes.projectUrl" />
+        <h1 class="project__title">{{ project?.data.attributes.name }}</h1>
         <SpecRow
+          v-if="project?.data.attributes.githubUrl"
+          name-spec="github"
+          :data="project?.data.attributes.githubUrl"
+        />
+        <SpecRow
+          v-if="project?.data.attributes.projectUrl"
+          name-spec="url"
+          :data="project?.data.attributes.projectUrl"
+        />
+        <SpecRow
+          v-if="project?.data.attributes.technologies.data"
           name-spec="Technologies"
-          :data="project.attributes.technologies.data"
+          :data="project?.data.attributes.technologies.data"
         />
       </div>
       <div
         class="project__description"
-        v-html="$mdRenderer.render(project.attributes.description)"
+        v-html="$mdRenderer.render(project?.data.attributes.description ?? '')"
       ></div>
       <ImageSrcSet
-        v-for="(image, index) in project.attributes.images.data"
+        v-for="(image, index) in project?.data.attributes.images.data"
         :key="index"
         :image="image"
         :sizes="`${(100 / 6) * 4}vw`"
@@ -41,14 +51,13 @@ definePageMeta({
 const route = useRoute()
 const { findOne } = useStrapi()
 
-const { data: project } = await findOne<Project>(
-  'projects',
-  `${route.params.slug}`
-).catch((err) => {
-  throw new Error(
-    `Impossible de récupérer le projet "${route.params.slug}" ${err}`
-  )
-})
+const { data: project } = await useAsyncData('project', () =>
+  findOne<Project>('projects', `${route.params.slug}`).catch((err) => {
+    throw new Error(
+      `Impossible de récupérer le projet "${route.params.slug}" ${err}`
+    )
+  })
+)
 </script>
 
 <style scoped lang="scss">

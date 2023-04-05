@@ -109,7 +109,7 @@ export interface Project extends StrapiBaseEntity {
 }
 
 
-interface Technology extends StrapiBaseEntity {
+export interface Technology extends StrapiBaseEntity {
   name: string;
 }
 
