@@ -1,28 +1,36 @@
 <template>
   <div class="about">
-    <header>
-      <h1>{{ about.attributes.pageTitle }}</h1>
-      <p>{{ about.attributes.headerText }}</p>
-      <img :src="url" :alt="alternativeText" />
+    <div v-if="error">{{ error.message }}</div>
+    <div v-if="pending">Chargement</div>
+
+    <header v-if="!error && !pending">
+      <h1>{{ about?.data.attributes.pageTitle }}</h1>
+      <p>{{ about?.data.attributes.headerText }}</p>
+      <img
+        :src="url"
+        :alt="
+          about?.data.attributes.imageProfil.data.attributes.alternativeText
+        "
+      />
     </header>
-    <main>
+    <main v-if="!error && !pending">
       <ExperiencesList>
         <ExperienceDetail
-          v-for="experience in about.attributes.experiences"
+          v-for="experience in about?.data.attributes.experiences"
           :key="experience.id"
           :experience="experience"
         />
       </ExperiencesList>
       <EducationList>
         <EducationDetail
-          v-for="education in about.attributes.educations"
+          v-for="education in about?.data.attributes.educations"
           :key="education.id"
           :education="education"
         />
       </EducationList>
       <SkillList>
         <SkillDetail
-          v-for="skill in about.attributes.skills.data"
+          v-for="skill in about?.data.attributes.skills.data"
           :key="skill.id"
           :skill="skill"
         />
@@ -36,23 +44,29 @@ import { About } from '@/types/index'
 
 const { findOne } = useStrapi()
 
-const { data: about } = await findOne<About>('about', {
-  populate: [
-    'imageProfil',
-    'experiences.id',
-    'experiences.period',
-    'educations',
-    'educations.period',
-    'skills',
-    'skills.subSkills',
-  ],
-}).catch(() => {
-  throw new Error("impossible de récupérer les données 'About'")
-})
+const {
+  data: about,
+  error,
+  pending,
+} = await useAsyncData('about', () =>
+  findOne<About>('about', {
+    populate: [
+      'imageProfil',
+      'experiences.id',
+      'experiences.period',
+      'educations',
+      'educations.period',
+      'skills',
+      'skills.subSkills',
+    ],
+  }).catch(() => {
+    throw new Error("impossible de récupérer les données pour la page 'About'")
+  })
+)
 
-const url = useStrapiMedia(about.attributes.imageProfil.data.attributes.url)
-const alternativeText =
-  about.attributes.imageProfil.data.attributes.alternativeText
+const url = useStrapiMedia(
+  about.value?.data.attributes.imageProfil.data.attributes.url ?? ''
+)
 </script>
 
 <style scoped lang="scss">

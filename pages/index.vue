@@ -1,11 +1,11 @@
 <template>
   <div>
     <div v-if="home" class="header__wrapper">
-      <HeaderHome :home="home.attributes" />
+      <HeaderHome :home="home.data.attributes" />
     </div>
     <ProjectsList>
       <ProjectCard
-        v-for="project in projects"
+        v-for="project in projects?.data"
         :key="project.id"
         :project="project.attributes"
       />
@@ -18,15 +18,13 @@ import { Home, Project } from '~~/types'
 
 const { find, findOne } = useStrapi()
 
-const { data: projects } = await find<Project>('projects', {
-  populate: 'cover',
-}).catch(() => {
-  throw new Error("impossible de récupérer les données 'Projects'")
-})
+const { data: projects } = await useAsyncData('projects', () =>
+  find<Project>('projects', {
+    populate: 'cover',
+  })
+)
 
-const { data: home } = await findOne<Home>('home').catch(() => {
-  throw new Error("impossible de récupérer les données 'Home'")
-})
+const { data: home } = await useAsyncData('home', () => findOne<Home>('home'))
 </script>
 
 <style lang="scss" scoped>
