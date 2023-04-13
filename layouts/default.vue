@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div ref="main" class="layout">
     <div class="background">
       <div class="background__column"></div>
       <div class="background__column"></div>
@@ -20,6 +20,53 @@
     <TheFooter />
   </div>
 </template>
+
+<script setup lang="ts">
+// Gsap Animation
+const { $gsap: gsap } = useNuxtApp()
+
+const main = ref<HTMLElement>()
+const ctx = ref<gsap.Context>()
+
+const backgroundTimings = {
+  duration: 4,
+  delay: 0.3,
+  get stagger() {
+    return this.duration / 5
+  },
+  ease: 'Power2.easeOut',
+}
+
+onMounted(() => {
+  ctx.value = gsap.context(() => {
+    gsap.from('.background__column', {
+      delay: backgroundTimings.delay,
+      duration: backgroundTimings.duration,
+      stagger: backgroundTimings.stagger,
+      transform: 'translateY(-100%)',
+      ease: 'Power2.easeOut',
+    })
+    gsap.from('.nav__logo', {
+      delay: 0.4,
+      opacity: 0,
+      duration: 1,
+      transform: 'translate(-50%, -50%)',
+      ease: 'Power2.easeOut',
+    })
+    gsap.from('.nav__link', {
+      delay: (backgroundTimings.duration / 6) * 5,
+      opacity: 0,
+      duration: 1,
+      transform: 'translate(50%, -50%)',
+      ease: 'Power2.easeOut',
+    })
+  }, main.value)
+})
+
+onUnmounted(() => {
+  ctx?.value?.revert()
+})
+</script>
 
 <style scoped lang="scss">
 .layout {
@@ -87,6 +134,6 @@
 }
 
 :not(:last-child).background__column {
-  border-right: 1px solid var(--orange-light);
+  border-right: 1.5px solid var(--orange-light);
 }
 </style>

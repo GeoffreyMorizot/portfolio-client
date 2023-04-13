@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { Home, Project } from '~~/types'
 
+// Data fetching
 const { find, findOne } = useStrapi()
 
 const { data: projects } = await useAsyncData('projects', () =>
