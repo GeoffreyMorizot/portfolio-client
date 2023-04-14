@@ -27,12 +27,31 @@ const url = useStrapiMedia(props.project.cover.data.attributes.url)
   }
 }
 
+.card.intersect {
+  transition: all 500ms ease-in 0s;
+  background: red;
+}
+
 .card__img {
   @extend %image-ratio-cover;
+  position: relative;
   grid-column: 1 / span 3;
   width: 50%;
   overflow: hidden;
   height: auto;
+  --x-pos: -100%;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--orange);
+    z-index: 1;
+    transform: translate3d(var(--x-pos), 0, 0);
+  }
+}
+
+.card__img img {
+  opacity: 0;
 }
 
 .card .card__img img {
@@ -50,6 +69,7 @@ const url = useStrapiMedia(props.project.cover.data.attributes.url)
 .card__title {
   position: relative;
   display: flex;
+  transform: scale(0.9); // 1 after animation
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -61,9 +81,12 @@ const url = useStrapiMedia(props.project.cover.data.attributes.url)
   font-size: clamp(32px, 4vw, 64px);
   color: var(--blue);
   z-index: 1;
+  opacity: 0;
+  --scale-bg-text: 1.2; // 1 after animation
   &::after {
     content: attr(data-title);
     position: absolute;
+    transform: scale(var(--scale-bg-text));
     top: 0;
     right: 0;
     bottom: 0;
