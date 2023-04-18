@@ -173,8 +173,6 @@ header.header__home {
   --origin: left;
   &::after {
     @extend %overlay-slide-apparition;
-    transform-origin: var(--origin);
-    transform: scaleX(var(--scale-x));
   }
 }
 .header-home__name {

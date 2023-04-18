@@ -20,5 +20,5 @@ interface ImageSrcSetProps extends Partial<HTMLImageElement> {
 
 const props = defineProps<ImageSrcSetProps>()
 
-const src = useStrapiMedia(props.image.attributes.formats.medium.url)
+const src = useStrapiMedia(props.image.attributes.url)
 </script>
