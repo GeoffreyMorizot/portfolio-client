@@ -41,11 +41,7 @@ const url = useStrapiMedia(props.project.cover.data.attributes.url)
   height: auto;
   --x-pos: -100%;
   &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: var(--orange);
-    z-index: 1;
+    @extend %overlay-slide-apparition;
     transform: translate3d(var(--x-pos), 0, 0);
   }
 }

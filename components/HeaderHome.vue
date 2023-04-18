@@ -172,10 +172,7 @@ header.header__home {
   --scale-x: 0;
   --origin: left;
   &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--orange);
+    @extend %overlay-slide-apparition;
     transform-origin: var(--origin);
     transform: scaleX(var(--scale-x));
   }

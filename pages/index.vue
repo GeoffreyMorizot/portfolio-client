@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { Home, Project } from '~~/types'
 
+// #region Fetch Data
 const { find, findOne } = useStrapi()
 
 const { data: projects } = await useAsyncData('projects', () =>
@@ -25,20 +26,20 @@ const { data: projects } = await useAsyncData('projects', () =>
 )
 
 const { data: home } = await useAsyncData('home', () => findOne<Home>('home'))
-
-// Card Intersection Observer Callback
-
+// #endregion
+// #region Gsap Animation
 const { $gsap: gsap } = useNuxtApp()
-const tl = gsap.timeline()
 const animationCb = () => {
   // 1.Overlay slides to the right - position 0
   // 2.Image appears behind the overlay
   // 3.Overlay slides to the right - position +100%
   // 4.Title appears
-  tl.to('.card.isIntersecting .card__img', {
-    '--x-pos': '0',
-    duration: 0.75,
-  })
+  const tl = gsap.timeline()
+  return tl
+    .to('.card.isIntersecting .card__img', {
+      '--x-pos': '0',
+      duration: 0.75,
+    })
     .to('.card.isIntersecting .card__img img', {
       opacity: 1,
       duration: 0,
@@ -64,35 +65,28 @@ const animationCb = () => {
         opacity: 1,
         ease: 'Power3.easeOut',
       },
-      '-=0.25'
+      '-=0.5'
     )
 }
+// #endregion
 
-// Intersection Observer
+// #region Intersection Observer
 
-const cards = ref<NodeListOf<Element> | null>(null)
+const cards = ref<NodeListOf<Element>>()
+const { observe, options } = useIntersectionObserver()
+options.value = {
+  root: null,
+  threshold: 0,
+}
+// #endregion
 
 onMounted(() => {
   cards.value = document.querySelectorAll('.card')
-  const observerOptions = {
-    root: null,
-    threshold: 0,
-  }
-  cards.value.forEach((card) => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('isIntersecting')
-          animationCb()
-          entry.target.classList.remove('isIntersecting')
-          observer.unobserve(entry.target)
-        }
-      })
-    }, observerOptions)
+  observe(cards, animationCb)
+})
 
-    // Start observing the element
-    observer.observe(card)
-  })
+onBeforeUnmount(() => {
+  animationCb().kill()
 })
 </script>
 

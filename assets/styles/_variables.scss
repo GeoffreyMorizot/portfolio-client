@@ -90,3 +90,11 @@
   line-height: 1.5;
   color: var(--blue);
 }
+
+%overlay-slide-apparition {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--orange);
+  z-index: 1;
+}
