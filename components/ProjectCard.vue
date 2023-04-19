@@ -41,6 +41,9 @@ const url = useStrapiMedia(props.project.cover.data.attributes.url)
   height: auto;
   --x-pos: -100%;
   &::before {
+    //REFACTO:
+    //- Remove transform translate3d and replace by scale3d
+    //- Change aslo in the animation GSAP
     @extend %overlay-slide-apparition;
     transform: translate3d(var(--x-pos), 0, 0);
   }

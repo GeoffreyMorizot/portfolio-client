@@ -97,4 +97,6 @@
   inset: 0;
   background-color: var(--orange);
   z-index: 1;
+  transform: scale3d(var(--scale-x), 1, 1);
+  transform-origin: var(--origin);
 }
