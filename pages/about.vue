@@ -5,7 +5,9 @@
 
     <header v-if="!error && !pending" ref="header" class="about__header">
       <h1 ref="title">{{ about?.data.attributes.pageTitle }}</h1>
-      <p>{{ about?.data.attributes.headerText }}</p>
+      <p ref="text" class="header__text">
+        {{ about?.data.attributes.headerText }}
+      </p>
       <div class="header__img_wrapper">
         <div ref="image" class="header__img">
           <ImageSrcSet
@@ -75,30 +77,25 @@ const { $gsap: gsap } = useNuxtApp()
 const header = ref<HTMLElement>()
 const title = ref<HTMLElement>()
 const image = ref<HTMLElement>()
+const text = ref<HTMLElement>()
 
 const ctx = ref<gsap.Context>()
 const tl = gsap.timeline()
-/* const tl = ref<gsap.core.Timeline>() */
 // #endregion
 
 // #region Lifecycle hooks
 onMounted(() => {
   ctx.value = gsap.context(() => {
-    if (!title.value || !image.value) throw new Error('No title')
-    slideAppearAnimationText(tl, title.value)
-    slideAppearAnimationImage(tl, image.value, '-=0.4')
+    if (!title.value || !image.value || !text.value) throw new Error('No title')
+    gsap.set(text.value, { opacity: 0, y: -10 })
+    revealAnimationText(tl, title.value)
+    tl.to(text.value, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+    revealAnimationImage(tl, image.value, '-=0.3')
   }, header.value)
 })
 
 onUnmounted(() => {
   ctx?.value?.revert()
-})
-
-onBeforeRouteLeave((to, from, next) => {
-  console.log({ to, from, next })
-  tl.reverse().then(() => {
-    next()
-  })
 })
 // #endregion
 </script>
@@ -128,8 +125,9 @@ onBeforeRouteLeave((to, from, next) => {
   }
 }
 
-.about header p {
+.about header .header__text {
   @extend %text-body-small;
+  font-size: 18px;
 }
 
 .about img {
