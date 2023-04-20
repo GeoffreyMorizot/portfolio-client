@@ -85,8 +85,8 @@ const tl = gsap.timeline()
 onMounted(() => {
   ctx.value = gsap.context(() => {
     if (!title.value || !image.value) throw new Error('No title')
-    slideAppearAnimationText(tl, title.value)
-    slideAppearAnimationImage(tl, image.value, '-=0.4')
+    revealAnimationText(tl, title.value)
+    revealAnimationImage(tl, image.value, '-=0.4')
   }, header.value)
 })
 

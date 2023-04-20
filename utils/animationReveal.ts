@@ -4,7 +4,7 @@
  * @param color Color of the text
  * @returns Object with the animation steps
  */
-const animationSlideSteps = (
+const revealSteps = (
   element: 'text' | 'image',
   color?: string
 ): Record<string, gsap.TweenVars> => {
@@ -48,14 +48,26 @@ const animationSlideSteps = (
  * @param element Element to animate
  * @param position  Position in the timeline "-=0.5"
  */
-export function slideAppearAnimationText(
+export function revealAnimationText(
   tl: gsap.core.Timeline,
-  element: HTMLElement,
-  position?: gsap.Position
+  element: HTMLElement | NodeList,
+  position?: gsap.Position,
+  color?: string
 ) {
-  tl.to(element, animationSlideSteps('text').step1, position || undefined)
-    .to(element, animationSlideSteps('text').step2)
-    .to(element, animationSlideSteps('text').step3)
+  if (element instanceof NodeList) {
+    const stagger = 0.2
+    tl.to(
+      element,
+      { ...revealSteps('text').step1, stagger },
+      position || undefined
+    )
+      .to(element, revealSteps('text', color).step2)
+      .to(element, { ...revealSteps('text').step3, stagger })
+  } else {
+    tl.to(element, revealSteps('text').step1, position || undefined)
+      .to(element, revealSteps('text', color).step2)
+      .to(element, revealSteps('text').step3)
+  }
 }
 
 /**
@@ -64,13 +76,13 @@ export function slideAppearAnimationText(
  * @param element Element to animate
  * @param position  Position in the timeline "-=0.5"
  */
-export function slideAppearAnimationImage(
+export function revealAnimationImage(
   tl: gsap.core.Timeline,
   element: HTMLElement,
   position?: gsap.Position
 ) {
-  tl.to(element, animationSlideSteps('image').step1, position || undefined).to(
+  tl.to(element, revealSteps('image').step1, position || undefined).to(
     element,
-    animationSlideSteps('image').step2
+    revealSteps('image').step2
   )
 }

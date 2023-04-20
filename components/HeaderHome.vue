@@ -1,8 +1,10 @@
 <template>
   <header ref="main" class="header__home">
     <h1>
-      <span class="header-home__firstname">{{ home.firstname }}</span>
-      <span class="header-home__name">{{ home.lastname }}</span>
+      <span ref="firstname" class="header-home__firstname">{{
+        home.firstname
+      }}</span>
+      <span ref="name" class="header-home__name">{{ home.lastname }}</span>
     </h1>
     <!-- <p class="header-home__intro">{{ home.bio }}</p> -->
     <p ref="introText" class="header-home__intro">{{ home.bio }}</p>
@@ -25,12 +27,9 @@ const { $gsap: gsap } = useNuxtApp()
 const main = ref<HTMLElement>()
 const ctx = ref<gsap.Context>()
 const tl = gsap.timeline()
-const slideAppear = {
-  durationIn: 0.5,
-  durationOut: 0.3,
-  ease: 'Power2.easeOut',
-}
 
+const firstname = ref<HTMLElement>()
+const name = ref<HTMLElement>()
 const introText = ref<HTMLElement>()
 const paragraphTest = ref<HTMLElement>()
 
@@ -92,54 +91,12 @@ function getTextWidth(text: string) {
 onMounted(() => {
   spanifyText()
   ctx.value = gsap.context(() => {
-    tl.to('.header-home__firstname', {
-      '--scale-x': 1,
-      delay: 0.6,
-      duration: slideAppear.durationIn,
-    })
-      .to('.header-home__firstname', {
-        '--origin': 'right',
-        color: 'var(--orange)',
-      })
-      .to('.header-home__firstname', {
-        '--scale-x': 0,
-        duration: slideAppear.durationOut,
-      })
-      .to(
-        '.header-home__name',
-        {
-          '--scale-x': 1,
-          duration: slideAppear.durationIn,
-        },
-        '-=0.5'
-      )
-      .to('.header-home__name', {
-        '--origin': 'right',
-        color: 'var(--orange)',
-      })
-      .to('.header-home__name', {
-        '--scale-x': 0,
-        duration: slideAppear.durationOut,
-      })
-      .to(
-        '.intro__line',
-        {
-          '--scale-x': 1,
-          duration: slideAppear.durationIn,
-          stagger: 0.2,
-        },
-        '-=0.6'
-      )
-      .to('.intro__line', {
-        '--origin': 'right',
-        duration: 0,
-        color: 'var(--blue)',
-      })
-      .to('.intro__line', {
-        '--scale-x': 0,
-        duration: slideAppear.durationOut,
-        stagger: 0.2,
-      })
+    if (!firstname.value || !name.value || !introText.value) {
+      throw new Error('SpanifyText(): missing elements')
+    }
+    revealAnimationText(tl, firstname.value)
+    revealAnimationText(tl, name.value)
+    revealAnimationText(tl, introText.value.childNodes, '-=0.3', 'var(--blue)')
   }, main.value)
 })
 
