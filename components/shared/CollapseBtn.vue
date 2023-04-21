@@ -41,7 +41,6 @@ const animationToPlus = ref<SVGAnimateElement | null>(null)
 watch(
   () => props.isOpen,
   async (newVal: boolean, oldVal: boolean) => {
-    console.log('watch', newVal)
     if (newVal === oldVal || !animationToArrow.value || !animationToPlus.value)
       return
     if (!props.isOpen) {
