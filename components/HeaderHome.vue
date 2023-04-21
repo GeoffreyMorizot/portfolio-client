@@ -47,8 +47,8 @@ onMounted(() => {
       throw new Error('SpanifyText(): missing elements')
     }
     revealAnimationText(tl, firstname.value)
-    revealAnimationText(tl, name.value)
-    revealAnimationText(tl, introText.value.childNodes, '-=0.3', 'var(--blue)')
+    revealAnimationText(tl, name.value, '-=0.7')
+    revealAnimationText(tl, introText.value.childNodes, '-=0.9', 'var(--blue)')
   }, main.value)
 })
 

@@ -8,8 +8,8 @@ const revealSteps = (
   element: 'text' | 'image',
   color?: string
 ): Record<string, gsap.TweenVars> => {
-  const durationIn = 0.6
-  const durationOut = 0.45
+  const durationIn = 0.7
+  const durationOut = 0.55
   if (element === 'image')
     return {
       step1: {

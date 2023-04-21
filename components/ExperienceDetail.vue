@@ -6,9 +6,20 @@
       <time :datetime="endDate">{{ endDate }}</time>
     </div>
     <div class="xp__content">
-      <h4>{{ experience.title }}</h4>
+      <button class="xp__btn" @click="open">
+        <h4>{{ experience.title }}</h4>
+        <CollapseBtn
+          :is-open="isOpen.value"
+          color="var(--blue)"
+          duration="0.15s"
+        />
+      </button>
       <h5>{{ experience.subTitle }}</h5>
-      <div v-html="$mdRenderer.render(experience.description)"></div>
+      <div
+        v-show="isOpen.value"
+        ref="desc"
+        v-html="$mdRenderer.render(experience.description)"
+      ></div>
     </div>
   </article>
 </template>
@@ -18,6 +29,26 @@ import { Experience } from '@/types'
 import useDateFormat from '@/composables/useDateFormat'
 
 const props = defineProps<{ experience: Experience }>()
+const isOpen = reactive({ value: false })
+const { $gsap: gsap } = useNuxtApp()
+const tl = gsap.timeline()
+
+const desc = ref<HTMLElement | null>(null)
+onUpdated(() => {
+  if (desc.value && isOpen.value) {
+    tl.from(desc.value?.querySelectorAll('li'), {
+      x: 5,
+      stagger: 0.05,
+      delay: 0.1,
+      opacity: 0,
+      ease: 'Power2.easeOut',
+    })
+  }
+})
+
+function open() {
+  isOpen.value = !isOpen.value
+}
 
 const startDate = useDateFormat(props.experience.period.startDate).replace(
   '/',
@@ -51,6 +82,11 @@ const endDate = useDateFormat(props.experience.period.endDate).replace('/', '.')
   grid-column: 2 / span 3;
   display: flex;
   flex-direction: column;
+}
+
+.xp__content .xp__btn {
+  display: flex;
+  justify-content: space-between;
 }
 
 .xp__content h4 {
