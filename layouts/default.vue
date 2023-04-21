@@ -29,7 +29,7 @@ const main = ref<HTMLElement>()
 const ctx = ref<gsap.Context>()
 
 const backgroundTimings = {
-  duration: 4,
+  duration: 2.5,
   delay: 0.3,
   get stagger() {
     return this.duration / 5
