@@ -1,5 +1,9 @@
-import { Strapi4ResponseMany,Strapi4ResponseData, Strapi4Response } from "@nuxtjs/strapi/dist/runtime/types" 
-import { Strapi4Formats, Strapi4Format } from "./strapi4"
+import {
+  Strapi4ResponseMany,
+  Strapi4ResponseData,
+  Strapi4Response,
+} from '@nuxtjs/strapi/dist/runtime/types'
+import { Strapi4Formats, Strapi4Format } from './strapi4'
 
 //STRAPI
 interface StrapiBaseEntity {
@@ -22,10 +26,10 @@ export interface Strapi4ResponseMultiMediaImage {
   }>
 }
 
-export type Strapi4FormatKey = "small" | "medium" | "thumbnail";
+export type Strapi4FormatKey = 'small' | 'medium' | 'thumbnail'
 export type Strapi4Formats = {
   [key in Strapi4FormatKey]: Strapi4Format
-};
+}
 export interface Strapi4MediaImage extends StrapiBaseEntity {
   name: string
   alternativeText: string | undefined
@@ -43,8 +47,6 @@ export interface Strapi4MediaImage extends StrapiBaseEntity {
   formats: Strapi4Formats
 }
 
-
-
 //ENTITIES
 export interface Home extends StrapiBaseEntity {
   firstname: string
@@ -59,7 +61,7 @@ export interface About extends StrapiBaseEntity {
   imageProfil: Strapi4ResponseSingleMediaImage
   experiences: Experience[]
   educations: Education[]
-  skills: {data: Omit<Strapi4ResponseData<Skill>[], "meta">}
+  skills: { data: Omit<Strapi4ResponseData<Skill>[], 'meta'> }
 }
 
 export interface Skill extends StrapiBaseEntity {
@@ -68,9 +70,9 @@ export interface Skill extends StrapiBaseEntity {
 }
 
 export interface SubSkill {
-  id: number;
-  __component: string;
-  name: string | null;
+  id: number
+  __component: string
+  name: string | null
 }
 
 export interface Experience {
@@ -103,14 +105,13 @@ export interface Project extends StrapiBaseEntity {
   description: string
   cover: Strapi4ResponseSingleMediaImage
   images: Strapi4ResponseMultiMediaImage
-  technologies: {data: Omit<Strapi4ResponseData<Technology>, "meta">[]}
+  technologies: { data: Omit<Strapi4ResponseData<Technology>, 'meta'>[] }
   projectUrl: Url
   githubUrl: Url
 }
 
-
 export interface Technology extends StrapiBaseEntity {
-  name: string;
+  name: string
 }
 
 export interface Url {

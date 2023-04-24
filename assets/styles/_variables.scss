@@ -3,7 +3,7 @@
   --grid: repeat(var(--nb-column), 1fr);
   --primary-font: 'Space Grotesk Variable';
   --secondary-font: 'Inter Variable';
-  --ratio-image: 3 / 5
+  --ratio-image: 3 / 5;
 }
 
 %grid-6 {
@@ -100,7 +100,6 @@
   transform: scale3d(var(--scale-x), 1, 1);
   transform-origin: var(--origin);
 }
-
 
 .wrapper {
   overflow: hidden;
