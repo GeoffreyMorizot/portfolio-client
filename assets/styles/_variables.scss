@@ -100,3 +100,9 @@
   transform: scale3d(var(--scale-x), 1, 1);
   transform-origin: var(--origin);
 }
+
+
+.wrapper {
+  overflow: hidden;
+  height: fit-content;
+}
