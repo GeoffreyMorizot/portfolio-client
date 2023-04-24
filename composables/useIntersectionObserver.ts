@@ -3,7 +3,7 @@ export function useIntersectionObserver() {
 
   function observe(
     cards: Ref<NodeListOf<Element> | undefined>,
-    cb: () => gsap.core.Timeline
+    cb: () => gsap.core.Timeline | (() => void)
   ) {
     if (!cards.value) return
     cards.value.forEach((card) => {

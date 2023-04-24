@@ -8,6 +8,72 @@
   </section>
 </template>
 
+<script setup lang="ts">
+const { observe } = useIntersectionObserver()
+const element = ref<NodeListOf<Element>>()
+const { $gsap: gsap } = useNuxtApp()
+
+function animationCb() {
+  const tl = gsap.timeline()
+  return tl
+    .to('.xp.isIntersecting', {
+      opacity: 1,
+      duration: 0,
+    })
+    .to('.xp.isIntersecting', {
+      '--scale-x': 1,
+      duration: 0.4,
+      ease: 'Power3.easeOut',
+    })
+    .from(
+      '.xp.isIntersecting .xp__dates',
+      {
+        y: '100%',
+        duration: 0.4,
+        ease: 'Power3.easeOut',
+      },
+      '-=0.1'
+    )
+    .from(
+      '.xp.isIntersecting .xp__title',
+      {
+        y: '100%',
+        duration: 0.4,
+        ease: 'Power3.easeOut',
+      },
+      '-=0.1'
+    )
+    .from(
+      '.xp.isIntersecting .xp__subtitle',
+      {
+        y: '100%',
+        duration: 0.4,
+        ease: 'Power3.easeOut',
+      },
+
+      '-=0.15'
+    )
+    .from(
+      '.xp.isIntersecting .xp__icon',
+      {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'Power3.easeOut',
+      },
+      '-=0.15'
+    )
+}
+
+onMounted(() => {
+  element.value = document.querySelectorAll('.xp')
+  observe(element, animationCb)
+})
+
+onBeforeUnmount(() => {
+  animationCb().revert()
+})
+</script>
+
 <style scoped lang="scss">
 .experience {
   grid-column: 2 / span 4;
