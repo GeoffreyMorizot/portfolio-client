@@ -1,8 +1,10 @@
 <template>
   <div class="education">
-    <h4>{{ education.name }}</h4>
+    <span class="wrapper">
+      <h4>{{ education.name }}</h4>
+    </span>
     <div class="education__location-date">
-      <div class="education__location-school">
+      <div class="education__location-school wrapper">
         <p>
           <span>{{ education.school }}</span>
           -
@@ -10,9 +12,13 @@
         </p>
       </div>
       <span class="education__divider" />
-      <time>{{ startDate }}</time>
-      -
-      <time>{{ endDate }}</time>
+      <span class="wrapper">
+        <div class="education__period">
+          <time>{{ startDate }}</time>
+          -
+          <time>{{ endDate }}</time>
+        </div>
+      </span>
     </div>
   </div>
 </template>
@@ -35,11 +41,13 @@ const endDate = useDateFormat(props.education.period.endDate).replace('/', '.')
 }
 
 .education h4 {
+  display: block;
   font-family: var(--secondary-font);
   font-size: 1.25rem;
   font-variation-settings: 'wght' 550;
   text-transform: uppercase;
   color: var(--orange);
+  opacity: 0;
 }
 
 .education__divider {
@@ -49,7 +57,8 @@ const endDate = useDateFormat(props.education.period.endDate).replace('/', '.')
   margin-inline: 1rem;
 }
 
-.education__divider span {
+.education__divider {
+  transform-origin: left;
   margin-inline: 0.25rem;
 }
 

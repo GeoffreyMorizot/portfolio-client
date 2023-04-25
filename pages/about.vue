@@ -26,13 +26,10 @@
           :experience="experience"
         />
       </ExperiencesList>
-      <EducationList>
-        <EducationDetail
-          v-for="education in about?.data.attributes.educations"
-          :key="education.id"
-          :education="education"
-        />
-      </EducationList>
+      <EducationList
+        v-if="about?.data.attributes.educations"
+        :educations="about?.data.attributes.educations"
+      />
       <SkillList>
         <SkillDetail
           v-for="skill in about?.data.attributes.skills.data"
