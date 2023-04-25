@@ -2,11 +2,13 @@ export function useIntersectionObserver() {
   const options = ref<IntersectionObserverInit>({ threshold: 0.5 })
 
   function observe(
-    cards: Ref<NodeListOf<Element> | undefined>,
+    elements:
+      | Ref<NodeListOf<Element> | undefined>
+      | Ref<Array<HTMLElement> | undefined>,
     cb: () => gsap.core.Timeline | (() => void)
   ) {
-    if (!cards.value) return
-    cards.value.forEach((card) => {
+    if (!elements.value) return
+    elements.value.forEach((element) => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -19,7 +21,7 @@ export function useIntersectionObserver() {
       }, options.value)
 
       // Start observing the element
-      observer.observe(card)
+      observer.observe(element)
     })
   }
   return {
