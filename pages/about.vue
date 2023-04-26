@@ -30,13 +30,10 @@
         v-if="about?.data.attributes.educations"
         :educations="about?.data.attributes.educations"
       />
-      <SkillList>
-        <SkillDetail
-          v-for="skill in about?.data.attributes.skills.data"
-          :key="skill.id"
-          :skill="skill"
-        />
-      </SkillList>
+      <SkillList
+        v-if="about?.data.attributes.skills"
+        :skills="about?.data.attributes.skills.data"
+      />
     </main>
   </div>
 </template>
