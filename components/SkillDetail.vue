@@ -21,6 +21,7 @@ defineProps<{ skill: Omit<Strapi4ResponseData<Skill>, 'meta'> }>()
   font-variation-settings: 'wght' 550;
   text-transform: uppercase;
   color: var(--orange);
+  padding-right: 1rem;
 }
 
 .subskill span {
