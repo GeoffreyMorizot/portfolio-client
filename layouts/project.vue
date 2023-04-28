@@ -9,9 +9,11 @@
       <div class="background__column"></div>
     </div>
     <header>
-      <span class="back-btn">
-        <NuxtLink @click="router.back">Retour</NuxtLink>
-      </span>
+      <div class="back-btn">
+        <NuxtLink @click="router.back">
+          <BackBtn />
+        </NuxtLink>
+      </div>
     </header>
     <main>
       <slot />
@@ -26,9 +28,14 @@ const router = useRouter()
 
 <style scoped lang="scss">
 .back-btn {
-  writing-mode: vertical-lr;
-  transform: translate3D(100%, 0, 0) rotate(180deg);
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: calc((100% / 6) * 1);
+  color: var(--orange);
+}
+
+.back-btn a {
+  display: inline-block;
 }
 .layout {
   position: relative;
@@ -39,6 +46,12 @@ const router = useRouter()
 
 .layout main {
   flex-grow: 1;
+}
+
+.layout header {
+  height: 8rem;
+  display: flex;
+  align-items: center;
 }
 
 .background {

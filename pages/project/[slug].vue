@@ -63,7 +63,6 @@ const { data: project } = await useAsyncData('project', () =>
 <style scoped lang="scss">
 .project {
   --padding-inline: calc(100% / 6);
-  margin-top: 71px;
   width: 100%;
 }
 
